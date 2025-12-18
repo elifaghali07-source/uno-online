@@ -1,0 +1,317 @@
+:root {
+    --bg1: #0b1020;
+    --bg2: #101a3a;
+
+    --panel: rgba(255, 255, 255, 0.08);
+    --panel2: rgba(255, 255, 255, 0.12);
+    --text: #eef2ff;
+    --muted: rgba(238, 242, 255, 0.75);
+    --stroke: rgba(255, 255, 255, 0.14);
+
+    --red: #e53935;
+    --blue: #1e88e5;
+    --green: #43a047;
+    --yellow: #fdd835;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    color: var(--text);
+    background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(255, 255, 255, 0.10), transparent 55%),
+        radial-gradient(900px 500px at 80% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 24px 18px 40px;
+}
+
+.topbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.logo {
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    font-size: 34px;
+}
+
+.pill {
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--stroke);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 560px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.panel {
+    padding: 14px;
+    background: var(--panel);
+    border: 1px solid var(--stroke);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 18px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+input {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text);
+    outline: none;
+    min-width: 240px;
+}
+
+input::placeholder {
+    color: rgba(238, 242, 255, 0.55);
+}
+
+button {
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #0b1020;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff, #dfe6ff);
+}
+
+button:hover {
+    filter: brightness(1.02);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.roomInfo {
+    color: var(--muted);
+    font-weight: 800;
+}
+
+h2 {
+    margin: 16px 0 8px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.table {
+    margin-top: 10px;
+}
+
+.tableTop {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-bottom: 10px;
+}
+
+.pile {
+    flex: 1;
+    min-width: 240px;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--stroke);
+}
+
+.pile.right {
+    max-width: 320px;
+}
+
+.pileLabel {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+}
+
+.spacer {
+    height: 10px;
+}
+
+.roomBadge {
+    display: inline-block;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--panel2);
+    border: 1px solid var(--stroke);
+    font-weight: 900;
+}
+
+#players {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#players li {
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: var(--panel2);
+    border: 1px solid var(--stroke);
+    color: var(--text);
+    font-weight: 800;
+}
+
+.deck {
+    width: 140px;
+    height: 190px;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.deck::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.22), transparent 45%);
+    transform: rotate(10deg);
+}
+
+.deckText {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 1000;
+    letter-spacing: 1px;
+}
+
+.discard {
+    width: 140px;
+    height: 190px;
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(238, 242, 255, 0.65);
+    font-weight: 800;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.discardHint {
+    font-size: 12px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.hand {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.card {
+    width: 92px;
+    height: 132px;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 14px 22px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.32), transparent 45%);
+    transform: rotate(12deg);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card .corner {
+    position: absolute;
+    font-weight: 1000;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.card .corner.tl {
+    top: 10px;
+    left: 10px;
+}
+
+.card .corner.br {
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(180deg);
+}
+
+.card .center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    font-weight: 1000;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+}
+
+.card.red {
+    background: linear-gradient(135deg, #ff4b4b, var(--red));
+}
+
+.card.blue {
+    background: linear-gradient(135deg, #4aa3ff, var(--blue));
+}
+
+.card.green {
+    background: linear-gradient(135deg, #5be37a, var(--green));
+}
+
+.card.yellow {
+    background: linear-gradient(135deg, #ffe26a, var(--yellow));
+    color: #0b1020;
+}
