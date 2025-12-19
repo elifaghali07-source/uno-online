@@ -1,26 +1,24 @@
 const express = require("express");
 const http = require("http");
-const { Server } = require("socket.io");
 const path = require("path");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// 🔴 EN ÖNEMLİ SATIR
+// public klasörünü static olarak yayınla
 app.use(express.static(path.join(__dirname, "public")));
 
-// Ana sayfa
+// ana sayfa
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Socket.io (şimdilik boş ama çalışıyor)
+// socket bağlantısı (şimdilik log)
 io.on("connection", (socket) => {
-    console.log("Bir kullanıcı bağlandı:", socket.id);
+    console.log("connected:", socket.id);
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log("Server çalışıyor → http://localhost:" + PORT);
-});
+server.listen(PORT, () => console.log("listening on", PORT));
