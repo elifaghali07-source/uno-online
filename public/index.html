@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UNO Online</title>
-    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/css/cards.css" />
 </head>
 
 <body>
@@ -62,6 +64,7 @@
 
             <h2>Kartlarım</h2>
             <div class="hand" id="hand">
+                <!-- Demo kartlar (görsel test) -->
                 <div class="card red" onclick="play('Kırmızı 5')" data-card="Kırmızı 5">
                     <div class="corner tl">5</div>
                     <div class="center">5</div>
@@ -75,10 +78,10 @@
                 </div>
             </div>
         </section>
-
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="client.js"></script>
     </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
 </body>
 
 </html>
